@@ -12,8 +12,8 @@
 'use strict';
 
 //Libraries used in the project
-const axios = require('axios');
-
+const Axios = require('axios');
+const Request = require('request');
 
 //Classes and functions
 class PremiumizeMeAPI
@@ -21,7 +21,10 @@ class PremiumizeMeAPI
     //Set baseURL
     static baseURL = "https://www.premiumize.me/api";
 
-
+    /**
+     * @constructor
+     * @param {String} apikey
+     */
     constructor(apikey)
     {
         //Checks for apikey
@@ -188,6 +191,104 @@ class PremiumizeMeAPI
         });
     }
 
+    /**
+     * @deleteFile
+     * @param {String} file_id
+     * @return {Promise}
+     */
+    deleteFile(file_id)
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/item/delete"),
+                true,
+                {
+                    apikey : this.apikey,
+                    id : file_id
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * @renameFile
+     * @param {String} file_id
+     * @param {String} file_name
+     * @return {Promise}
+     */
+    renameFile(file_id, file_name)
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/item/rename"),
+                true,
+                {
+                    apikey : this.apikey,
+                    id : file_id,
+                    name : file_name
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * @fetchFileDetails
+     * @param {String} file_id
+     * @return {Promise}
+     */
+    fetchFileDetails(file_id)
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/item/details"),
+                true,
+                {
+                    apikey : this.apikey,
+                    id : file_id
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * @fetchFileDetails
+     * @param {String} src_address
+     * @param {ReadStream} src_file
+     * @param {String} [folder_id]
+     * @return {Promise}
+     */
+    createTransfer(src_address, src_file, folder_id)
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/transfer/create"),
+                true,
+                {
+                    "file" : src_file,
+                    "apikey" : this.apikey,
+                    "folder_id" : (folder_id || "")
+                },
+                true
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
 }
 
 // TODO: FOR LATER USE IN OBJECT BASED API
@@ -206,29 +307,42 @@ class PremiumizeMeTransfer
 
 }*/
 
-function request(url, isPostRequest, parameterJson)
+function request(url, isPostRequest, parameterJson, isFormData)
 {
     return new Promise((resolve, reject) => {
         if(isPostRequest)
         {
             //Do a post request
-            axios.post(url, null, { params : parameterJson }).then((res) => {
-                //Check for a bad response code
-                if((res.statusCode !== 200) && (res.status !== 200))
-                {
-                    //Reject the invalid response code
-                    reject("Invalid status code <" + (res.statusCode || res.status) + ">");
-                }
+            if(isFormData)
+            {
+                Request({
+                    url: url,
+                    method: "POST",
+                    formData : parameterJson,
+                    headers: { "Content-Type": "multipart/form-data" }
+                }, function (err, res, body) {
+                    if(err) console.log(err);
+                    console.log(body);
+                });
+            } else {
+                Axios.post(url, null, { params : parameterJson }).then((res) => {
+                    //Check for a bad response code
+                    if((res.statusCode !== 200) && (res.status !== 200))
+                    {
+                        //Reject the invalid response code
+                        reject("Invalid status code <" + (res.statusCode || res.status) + ">");
+                    }
 
-                //Resolve the data
-                resolve(res.data);
-            }).catch((error) => {
-                //Reject the error
-                reject(error);
-            });
+                    //Resolve the data
+                    resolve(res.data);
+                }).catch((error) => {
+                    //Reject the error
+                    reject(error);
+                });
+            }
         } else {
             //Do a get request
-            axios.get(url, { params : parameterJson }).then((res) => {
+            Axios.get(url, { params : parameterJson }).then((res) => {
                 //Check for a bad response code
                 if((res.statusCode !== 200) && (res.status !== 200))
                 {
