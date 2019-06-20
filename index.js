@@ -14,6 +14,7 @@
 //Libraries used in the project
 const Axios = require('axios');
 const Request = require('request');
+const fs = require('fs');
 
 //Classes and functions
 class PremiumizeMeAPI
@@ -113,8 +114,8 @@ class PremiumizeMeAPI
     /**
      * @pasteToFolder
      * @param {String} folder_id
-     * @param {String} [toPasteFolderIds]
-     * @param {String} [toPasteFileIds]
+     * @param {String|String[]} [toPasteFolderIds]
+     * @param {String|String[]} [toPasteFileIds]
      * @return {Promise}
      */
     pasteToFolder(folder_id, toPasteFolderIds, toPasteFileIds)
@@ -263,7 +264,7 @@ class PremiumizeMeAPI
     }
 
     /**
-     * @fetchFileDetails
+     * @createTransfer
      * @param {String} src_address
      * @param {ReadStream} src_file
      * @param {String} [folder_id]
@@ -289,6 +290,164 @@ class PremiumizeMeAPI
         });
     }
 
+    /**
+     * @createDirectDownload
+     * @param {String} src_address
+     * @return {Promise}
+     */
+    createDirectDownload(src_address)
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/transfer/directdl"),
+                true,
+                {
+                    apikey : this.apikey,
+                    src : src_address
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * @createDirectDownload
+     * @return {Promise}
+     */
+    getTransferList()
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/transfer/list"),
+                false,
+                {
+                    apikey : this.apikey
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * @clearTransferList
+     * @return {Promise}
+     */
+    clearTransferList()
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/transfer/clearfinished"),
+                true,
+                {
+                    apikey : this.apikey
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * @deleteTransfer
+     * @param {String} transfer_id
+     * @return {Promise}
+     */
+    deleteTransfer(transfer_id)
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/transfer/delete"),
+                true,
+                {
+                    apikey : this.apikey,
+                    id : transfer_id
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * @getAccountInfo
+     * @return {Promise}
+     */
+    getAccountInfo()
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/account/info"),
+                true,
+                {
+                    apikey : this.apikey
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    //NO IDEA HOW OR IF ITS WORKING:
+
+    /**
+     * @checkHosterAvailability
+     * @param {String|String[]} src_address
+     * @return {Promise}
+     */
+    checkHosterAvailability(src_address)
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/cache/check"),
+                true,
+                {
+                    apikey : this.apikey,
+                    items : (
+                        Array.isArray(src_address) ?
+                            src_address :
+                            [src_address]
+                    ),
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
+    /**
+     * @getServiceList
+     * @return {Promise}
+     */
+    getServiceList()
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/services/list"),
+                true,
+                {
+                    apikey : this.apikey
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
 }
 
 // TODO: FOR LATER USE IN OBJECT BASED API
