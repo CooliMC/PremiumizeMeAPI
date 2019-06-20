@@ -265,23 +265,33 @@ class PremiumizeMeAPI
 
     /**
      * @createTransfer
-     * @param {String} src_address
-     * @param {ReadStream} src_file
+     * @param {String|ReadStream} src_address_file
      * @param {String} [folder_id]
      * @return {Promise}
      */
-    createTransfer(src_address, src_file, folder_id)
+    createTransfer(src_address_file, folder_id)
     {
+        //Temporary variable for the type check
+        let tempStringCheck = ((typeof src_address_file) !== "string");
+
+        //Default function code
         return new Promise((resolve, reject) => {
             request(
                 (PremiumizeMeAPI.baseURL + "/transfer/create"),
                 true,
-                {
-                    "file" : src_file,
-                    "apikey" : this.apikey,
-                    "folder_id" : (folder_id || "")
-                },
-                true
+                (
+                    tempStringCheck ? {
+                        "file" : src_address_file,
+                        "apikey" : this.apikey,
+                        "folder_id" : (folder_id || "")
+
+                    } : {
+                        apikey : this.apikey,
+                        src : src_address_file,
+                        folder_id : (folder_id || "")
+                    }
+                ),
+                tempStringCheck
             ).then((param) => {
                 resolve(param);
             }).catch((error) => {
