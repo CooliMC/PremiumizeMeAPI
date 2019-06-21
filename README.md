@@ -1,6 +1,6 @@
 # PremiumizeMeAPI
 
-<!---[![NPM Version](https://badge.fury.io/js/premiumize-me-api.svg)](//npmjs.com/package/premiumize-me-api)--->
+[![NPM Version](https://badge.fury.io/js/premiumize-me-api.svg)](//npmjs.com/package/premiumize-me-api)
 [![Github All Releases](https://img.shields.io/github/downloads/CooliMC/PremiumizeMeAPI/total.svg)]()
 
 ## Description
@@ -15,11 +15,11 @@ A simple JS-Wrapper for the official [PremiumizeMe-API](https://app.swaggerhub.c
 - Supports .nzb and .torrent files to create a transfer
 - Authentication through an API-Key
 
-<!--- ## Install --->
+## Install
 
-<!--- ``` --->
-<!--- npm install magnet-link --->
-<!--- ``` --->
+```
+npm install premiumize-me-api
+```
 
 ## Usage
 
