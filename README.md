@@ -346,7 +346,7 @@ The result for the ``` createZipDownload() ``` command looks like this:
 testAPI.checkHosterAvailability(src_address).then(console.log);
 ```
 
-The result for the ``` getAccountInfo() ``` command looks like this:
+The result for the ``` checkHosterAvailability() ``` command looks like this:
 
 ```json
 {
@@ -373,7 +373,7 @@ The result for the ``` getAccountInfo() ``` command looks like this:
 testAPI.getServiceList().then(console.log);
 ```
 
-The result for the ``` getAccountInfo() ``` command looks like this:
+The result for the ``` getServiceList() ``` command looks like this:
 
 ```json
 {
