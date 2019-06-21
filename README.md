@@ -35,10 +35,10 @@ let testAPI = new remiumizeMeAPI("YOUR_API_KEY");
 #### getFolderList(String folder_id)
 
 ```
-testAPI.getFolderList("FolderID").then(console.log);
+testAPI.getFolderList(folder_id).then(console.log);
 ```
 
-The result for the ``` getFolderList("FolderID") ``` command looks like this:
+The result for the ``` getFolderList() ``` command looks like this:
 
 ```json
 {
@@ -67,6 +67,104 @@ The result for the ``` getFolderList("FolderID") ``` command looks like this:
 ```
 
 
+#### deleteFile(String file_id)
+
+```
+testAPI.deleteFile(file_id).then(console.log);
+```
+
+The result for the ``` deleteFile() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "message": "string"
+}
+```
+
+
+#### renameFile(String file_id, String file_name)
+
+```
+testAPI.renameFile(file_id, file_name).then(console.log);
+```
+
+The result for the ``` renameFile() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "message": "string"
+}
+```
+
+
+#### fetchFileDetails(String file_id)
+
+```
+testAPI.fetchFileDetails(file_id).then(console.log);
+```
+
+The result for the ``` fetchFileDetails() ``` command looks like this:
+
+```json
+{
+  "id": "string",
+  "name": "string",
+  "type": "file",
+  "size": 0,
+  "created_at": 0,
+  "folder_id": "string",
+  "link": "string",
+  "stream_link": "string"
+}
+```
+
+
+#### createTransfer(String|ReadStream src_address_file, String folder_id)
+
+```
+testAPI.createTransfer(src_address_file, folder_id).then(console.log);
+```
+
+The result for the ``` createTransfer() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "id": "string",
+  "name": "example.jpg"
+}
+```
+
+
+#### createDirectDownload(String src_address)
+
+```
+testAPI.createDirectDownload(src_address).then(console.log);
+```
+
+The result for the ``` createDirectDownload() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "location": "https://server.com/path/file.ext",
+  "filename": "file.ext",
+  "filesize": 123123123,
+  "content": [
+    {
+      "path": "folder/file1.jpg",
+      "size": 123123123,
+      "link": "https://server.com/path/file.ext",
+      "stream_link": "https://server.com/path/file.ext",
+      "transcode_status": "finished"
+    }
+  ]
+}
+```
+
+
 #### getTransferList()
 
 ```
@@ -90,6 +188,38 @@ The result for the ``` getTransferList() ``` command looks like this:
       "file_id": "string"
     }
   ]
+}
+```
+
+
+#### clearTransferList()
+
+```
+testAPI.clearTransferList().then(console.log);
+```
+
+The result for the ``` clearTransferList() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "message": "string"
+}
+```
+
+
+#### deleteTransfer(String transfer_id)
+
+```
+testAPI.deleteTransfer(transfer_id).then(console.log);
+```
+
+The result for the ``` deleteTransfer() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "message": "string"
 }
 ```
 
