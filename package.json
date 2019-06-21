@@ -1,6 +1,6 @@
 {
   "name": "premiumize-me-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "CooliMC",
   "license": "MIT",
   "description": "A simple NodeJS-Wrapper for the official Premiumize.me API",
@@ -13,10 +13,24 @@
     "url": "https://github.com/CooliMC/PremiumizeMeAPI/issues"
   },
   "keywords": [
-    "premiumize", "premiumizeme", "premiumizemeapi", "apiwrapper",
-    "torrent", "streaming", "directdl", "bittorrent", "hoster",
-    "magnetlinks", "nzb", "nzbfile", "nzburl", "torrentfile",
-    "torrentfileurl", "downloader", "promises", "httpsdl"
+    "premiumize",
+    "premiumizeme",
+    "premiumizemeapi",
+    "apiwrapper",
+    "torrent",
+    "streaming",
+    "directdl",
+    "bittorrent",
+    "hoster",
+    "magnetlinks",
+    "nzb",
+    "nzbfile",
+    "nzburl",
+    "torrentfile",
+    "torrentfileurl",
+    "downloader",
+    "promises",
+    "httpsdl"
   ],
   "dependencies": {
     "axios": "^0.19.0",

@@ -1,3 +1,9 @@
+# Intelij
+.idea/
+
+# Tests
+test.js
+
 # Logs
 logs
 *.log
