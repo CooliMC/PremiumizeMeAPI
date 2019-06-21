@@ -1,16 +1,32 @@
 {
-  "name": "PremiumizeMeApi",
+  "name": "premiumize.me-api",
   "version": "1.0.0",
-  "description": "",
+  "author": "CooliMC",
+  "license": "MIT",
+  "description": "A simple NodeJS-Wrapper for the official Premiumize.me API",
+  "homepage": "https://github.com/CooliMC/PremiumizeMeAPI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "CLS && echo: Running test.js, see the result below: && node ./test.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CooliMC/PremiumizeMeAPI/issues"
+  },
+  "keywords": [
+    "premiumize", "premiumizeme", "premiumizemeapi", "apiwrapper",
+    "torrent", "streaming", "directdl", "bittorrent", "hoster",
+    "magnetlinks", "nzb", "nzbfile", "nzburl", "torrentfile",
+    "torrentfileurl", "downloader", "promises", "httpsdl"
+  ],
   "dependencies": {
     "axios": "^0.19.0",
     "request": "^2.88.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CooliMC/PremiumizeMeAPI.git"
+  },
+  "files": [
+    "index.js"
+  ]
 }
