@@ -409,6 +409,41 @@ class PremiumizeMeAPI
         });
     }
 
+    //Not working properly, zips whole root folder
+
+    /**
+     * @createZipDownload
+     * @param {String|String[]} file_id
+     * @param {String|String[]} folder_id
+     * @return {Promise}
+     */
+    createZipDownload(file_id, folder_id)
+    {
+        return new Promise((resolve, reject) => {
+            request(
+                (PremiumizeMeAPI.baseURL + "/zip/generate"),
+                true,
+                {
+                    apikey : this.apikey,
+                    files : (
+                        Array.isArray(file_id) ?
+                            file_id :
+                            [file_id]
+                    ),
+                    folders : (
+                        Array.isArray(folder_id) ?
+                            folder_id :
+                            [folder_id]
+                    )
+                }
+            ).then((param) => {
+                resolve(param);
+            }).catch((error) => {
+                reject(error);
+            });
+        });
+    }
+
     //NO IDEA HOW OR IF ITS WORKING:
 
     /**

@@ -29,11 +29,15 @@ npm install premiumize-me-api
 const PremiumizeMeAPI = require('premiumize-me-api')
 
 let testAPI = new remiumizeMeAPI("YOUR_API_KEY");
+````
 
-testAPI.getFolderList("FolderID").then(console.log);
-testAPI.getTransferList().then(console.log);
-testAPI.getAccountInfo().then(console.log);
+
+#### getFolderList(String folder_id)
+
 ```
+testAPI.getFolderList("FolderID").then(console.log);
+```
+
 The result for the ``` getFolderList("FolderID") ``` command looks like this:
 
 ```json
@@ -62,6 +66,13 @@ The result for the ``` getFolderList("FolderID") ``` command looks like this:
 }
 ```
 
+
+#### getTransferList()
+
+```
+testAPI.getTransferList().then(console.log);
+```
+
 The result for the ``` getTransferList() ``` command looks like this:
 
 ```json
@@ -82,6 +93,13 @@ The result for the ``` getTransferList() ``` command looks like this:
 }
 ```
 
+
+#### getAccountInfo()
+
+```
+testAPI.getAccountInfo().then(console.log);
+```
+
 The result for the ``` getAccountInfo() ``` command looks like this:
 
 ```json
@@ -93,6 +111,83 @@ The result for the ``` getAccountInfo() ``` command looks like this:
   "space_used": 0
 }
 ```
+
+
+#### createZipDownload(String|String[] file_id, String|String[] folder_id)
+
+```
+testAPI.createZipDownload(file_id, folder_id).then(console.log);
+```
+
+The result for the ``` createZipDownload() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "location": "string"
+}
+```
+
+
+#### checkHosterAvailability(String|String[] src_address)
+
+```
+testAPI.checkHosterAvailability(src_address).then(console.log);
+```
+
+The result for the ``` getAccountInfo() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "response": [
+    true
+  ],
+  "transcoded": [
+    true
+  ],
+  "filename": [
+    "string"
+  ],
+  "filesize": [
+    "string"
+  ]
+}
+```
+
+
+#### getServiceList()
+
+```
+testAPI.getServiceList().then(console.log);
+```
+
+The result for the ``` getAccountInfo() ``` command looks like this:
+
+```json
+{
+  "directdl": [
+    "string"
+  ],
+  "cache": [
+    "string"
+  ],
+  "fairusefactor": {
+    "service": 0
+  },
+  "aliases": {
+    "service": [
+      "string"
+    ]
+  },
+  "regexpatterns": {
+    "service": [
+      "string"
+    ]
+  }
+}
+```
+
 
 ## License
 
