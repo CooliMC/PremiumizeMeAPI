@@ -67,6 +67,87 @@ The result for the ``` getFolderList() ``` command looks like this:
 ```
 
 
+#### createFolder(String folder_name, String parent_id)
+
+```
+testAPI.createFolder(folder_name, parent_id).then(console.log)
+```
+
+The result for the ``` createFolder() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "id": "string"
+}
+```
+
+
+#### renameFolder(String folder_id, String folder_name)
+
+```
+testAPI.renameFolder(folder_id, folder_name).then(console.log)
+```
+
+The result for the ``` renameFolder() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "message": "string"
+}
+```
+
+
+#### pasteToFolder(String folder_id, String|String[] toPasteFolderIds, String|String[] toPasteFileIds)
+
+```
+testAPI.pasteToFolder(folder_id, toPasteFolderIds, toPasteFileIds).then(console.log);
+```
+
+The result for the ``` pasteToFolder() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "message": "string"
+}
+```
+
+
+#### deleteFolder(String folder_id)
+
+```
+testAPI.deleteFolder(folder_id).then(console.log);
+```
+
+The result for the ``` deleteFolder() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "message": "string"
+}
+```
+
+
+#### uploadToFolder(String folder_id)
+
+```
+testAPI.uploadToFolder(folder_id).then(console.log);
+```
+
+The result for the ``` uploadToFolder() ``` command looks like this:
+
+```json
+{
+  "status": "success",
+  "token": "string",
+  "url": "string"
+}
+```
+
+
 #### deleteFile(String file_id)
 
 ```
