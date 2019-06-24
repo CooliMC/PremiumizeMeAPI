@@ -1,7 +1,7 @@
 # PremiumizeMeAPI
 
 [![NPM Version](https://badge.fury.io/js/premiumize-me-api.svg)](//npmjs.com/package/premiumize-me-api)
-[![Github All Releases](https://img.shields.io/github/downloads/CooliMC/PremiumizeMeAPI/total.svg)]()
+[![NPM All Releases](https://img.shields.io/npm/dt/premiumize-me-api.svg)](//npmjs.com/package/premiumize-me-api)
 
 ## Description
 
