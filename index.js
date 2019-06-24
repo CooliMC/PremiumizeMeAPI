@@ -495,22 +495,14 @@ class PremiumizeMeAPI
     }
 }
 
-// TODO: FOR LATER USE IN OBJECT BASED API
-/*class PremiumizeMeFolder
-{
-
-}
-
-class PremiumizeMeFile
-{
-
-}
-
-class PremiumizeMeTransfer
-{
-
-}*/
-
+/**
+ * @request
+ * @param {String} url
+ * @param {Boolean} isPostRequest
+ * @param {String|JSON} parameterJson
+ * @param {Boolean} [isFormData]
+ * @return {Promise}
+ */
 function request(url, isPostRequest, parameterJson, isFormData)
 {
     return new Promise((resolve, reject) => {
