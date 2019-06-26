@@ -28,7 +28,7 @@ npm install premiumize-me-api
 ```js
 const PremiumizeMeAPI = require('premiumize-me-api')
 
-let testAPI = new remiumizeMeAPI("YOUR_API_KEY");
+let testAPI = new PremiumizeMeAPI("YOUR_API_KEY");
 ````
 
 

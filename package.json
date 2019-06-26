@@ -1,6 +1,6 @@
 {
   "name": "premiumize-me-api",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "CooliMC",
   "license": "MIT",
   "description": "A simple NodeJS-Wrapper for the official Premiumize.me API",
